@@ -1,6 +1,8 @@
 ///////////////////////////
 //Coding Challenge 7
 
+//Protect by a immediate invoked fucntion
+(function() {
 //Function Constructor
 function Question(theQuestion, answers, correctAnswer){
     this.theQuestion = theQuestion;
@@ -15,6 +17,7 @@ var question3 = new Question('What year was I born?', ['1934', '1995', '2002'], 
 
 //Store them inside an array
 var questionArray = [question1, question2, question3];
+var totalScore = 0;
 
 //Select a random question and log it to console with possible answers
 function randomQuestion(){
@@ -29,12 +32,27 @@ function randomQuestion(){
     var userAnswer = prompt("Please enter your answer (type a number):");
     if(randQuestion.answers[userAnswer - 1] === randQuestion.correctAnswer){
         console.log('Correct!');
+        totalScore += 1;
+        console.log('Current Score: ' + totalScore);
     } else{
         console.log('Incorrect!');
+        console.log('Current Score: ' + totalScore);
+    }
+    return userAnswer;
+}
+
+function game(){
+    for(;;){
+        var answer = randomQuestion();
+        if(answer === 'exit'){
+            break;
+        }
     }
 }
 
-randomQuestion();
+game();
+
+})();
 
 
 
